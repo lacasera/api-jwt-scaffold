@@ -1,0 +1,53 @@
+{
+    "name": "lacasera/api-jwt-scaffold",
+    "description": "This package helps scaffold jwt api authentication",
+    "keywords": [
+        "lacasera",
+        "api-jwt-scaffold"
+    ],
+    "homepage": "https://github.com/lacasera/api-jwt-scaffold",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Agyenim Boateng Barfi",
+            "email": "aboateng62@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lacasera\\ApiJwtScaffold\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lacasera\\ApiJwtScaffold\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lacasera\\ApiJwtScaffold\\ApiJwtScaffoldServiceProvider"
+            ],
+            "aliases": {
+                "ApiJwtScaffold": "Lacasera\\ApiJwtScaffold\\ApiJwtScaffoldFacade"
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<?php
+namespace {{namespace}}Http\Controllers\Auth;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
+class LoginController extends Controller
+{
+    /**
+     * @param array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' =>  ['required', 'string', 'email'],
+            'password' => ['required']
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+       $this->validator($credentials)->validate();
+
+       if (auth()->attempt($credentials)) {
+           $user = auth()->user();
+
+           $access_token = $user->createToken(config('app.name'))->accessToken;
+
+           return response()->json(compact('user', 'access_token'), 200);
+       }
+
+       return response()->json(['error' => 'user not found'], 404);
+    }
+}
