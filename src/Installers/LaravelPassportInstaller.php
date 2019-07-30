@@ -21,7 +21,7 @@ class LaravelPassportInstaller extends InstallerInterface
         'migrate',
         'passport:install',
         'passport:keys',
-        //'passport:client --personal'
+        'passport:client --personal'
     ];
 
     /**
@@ -61,10 +61,8 @@ class LaravelPassportInstaller extends InstallerInterface
     protected function runCommands()
     {
         foreach ($this->commands as $cmd){
-            Artisan::call($cmd);
+            Artisan::call("$cmd -q");
         }
-
-//        Artisan::call('passport:client --personal');
     }
 
     /**
