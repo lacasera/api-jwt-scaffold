@@ -16,11 +16,9 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "illuminate/support": "5.8.*"
+        "php": "^7.1"
     },
     "require-dev": {
-        "orchestra/testbench": "3.8.*",
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
@@ -34,8 +32,7 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test": "vendor/bin/phpunit --testdox"
     },
     "config": {
         "sort-packages": true

@@ -8,12 +8,10 @@ class LaravelPassportInstaller extends InstallerInterface
 {
     use DetectsApplicationNamespace;
 
-    protected $command;
-
     protected $filesToCopy = [
         'model/User.stub' => 'User.php',
         'providers/AuthServiceProvider.stub' => 'Providers/AuthServiceProvider.php',
-        'controllers/LoginController.stub' => 'Http/Controllers/Auth/LoginController.php',
+        'controllers/AuthController.stub' => 'Http/Controllers/Auth/AuthController.php',
         'controllers/RegisterController.stub' => 'Http/Controllers/Auth/RegisterController.php'
     ];
 
@@ -25,21 +23,9 @@ class LaravelPassportInstaller extends InstallerInterface
     ];
 
     /**
-     * install laravel-passport package using composer
-     */
-    protected function installPackage()
-    {
-        if (!class_exists("Laravel\Passport\Client")) {
-            return $this->terminal('composer require laravel/passport');
-        }
-
-        return true;
-    }
-
-    /**
      * copy files from stubs/passport to their appropriate locations
      */
-    protected function copyFiles(): void
+    public function copyFiles(): void
     {
         file_put_contents(
             config_path('auth.php'),
@@ -56,16 +42,6 @@ class LaravelPassportInstaller extends InstallerInterface
     }
 
     /**
-     * run additional commands needed by passport
-     */
-    protected function runCommands()
-    {
-        foreach ($this->commands as $cmd){
-            Artisan::call("$cmd -q");
-        }
-    }
-
-    /**
      * @param $file
      * @return mixed
      */
@@ -78,14 +54,17 @@ class LaravelPassportInstaller extends InstallerInterface
         );
     }
 
-
-    public function scaffold(): void
+    public function scaffold()
     {
-        $this->installPackage();
+        if (!class_exists("Laravel\Passport\Client")) {
+            $this->installPackage('laravel/passport');
+        }
 
-        $this->runCommands();
+        $this->runCommands($this->commands);
 
         $this->copyFiles();
+
+        return true;
     }
 
 }
