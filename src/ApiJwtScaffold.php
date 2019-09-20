@@ -7,11 +7,11 @@ class ApiJwtScaffold
 
     public function setup(string $packageToUse)
     {
-        $installer = app()->make($this->getPackageClass($packageToUse));
-        return $installer->scaffold();
+        return app()->make($this->getPackageClass($packageToUse))
+            ->scaffold();
     }
 
-    protected function getPackageClass(string $packageToUse)
+    public function getPackageClass(string $packageToUse)
     {
         $packageName = studly_case($packageToUse);
 

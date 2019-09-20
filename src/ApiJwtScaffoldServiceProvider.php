@@ -4,7 +4,7 @@ namespace Lacasera\ApiJwtScaffold;
 
 use Illuminate\Support\ServiceProvider;
 use Lacasera\ApiJwtScaffold\Console\ScaffoldCommand;
-use Lacasera\ApiJwtScaffold\Installers\InstallerInterface;
+use Lacasera\ApiJwtScaffold\Installers\InstallerContract;
 use Lacasera\ApiJwtScaffold\Installers\LaravelPassportInstaller;
 use Lacasera\ApiJwtScaffold\Installers\TymonJwtInstaller;
 
@@ -15,11 +15,6 @@ class ApiJwtScaffoldServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -44,7 +39,7 @@ class ApiJwtScaffoldServiceProvider extends ServiceProvider
             return new ApiJwtScaffold;
         });
 
-        $this->app->bind(InstallerInterface::class, LaravelPassportInstaller::class);
-        $this->app->bind(InstallerInterface::class, TymonJwtInstaller::class);
+        $this->app->bind(InstallerContract::class, LaravelPassportInstaller::class);
+        $this->app->bind(InstallerContract::class, TymonJwtInstaller::class);
     }
 }
