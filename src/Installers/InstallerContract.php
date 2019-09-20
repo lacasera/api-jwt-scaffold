@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 abstract class InstallerContract
 {
 
-    abstract function scaffold();
+    abstract public function scaffold();
 
     /**
      * install laravel-passport package using composer
