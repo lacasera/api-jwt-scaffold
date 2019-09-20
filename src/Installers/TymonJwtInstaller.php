@@ -4,7 +4,7 @@ namespace Lacasera\ApiJwtScaffold\Installers;
 use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Support\Facades\Artisan;
 
-class TymonJwtInstaller extends InstallerInterface
+class TymonJwtInstaller extends InstallerContract
 {
     use DetectsApplicationNamespace;
 

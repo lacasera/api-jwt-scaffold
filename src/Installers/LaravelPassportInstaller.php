@@ -1,10 +1,9 @@
 <?php
 namespace Lacasera\ApiJwtScaffold\Installers;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\DetectsApplicationNamespace;
 
-class LaravelPassportInstaller extends InstallerInterface
+class LaravelPassportInstaller extends InstallerContract
 {
     use DetectsApplicationNamespace;
 

@@ -4,7 +4,7 @@ namespace Lacasera\ApiJwtScaffold\Installers;
 
 use Illuminate\Support\Facades\Artisan;
 
-abstract class InstallerInterface
+abstract class InstallerContract
 {
 
     abstract function scaffold();
