@@ -3,7 +3,6 @@ namespace {{namespace}}Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -39,29 +38,19 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
      }
 
-    /**
-     * @param array $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' =>  ['required', 'string', 'email'],
-            'password' => ['required']
-        ]);
-    }
-
-    /**
+     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-       $this->validator($credentials)->validate();
+       if (auth()->attempt($request->only('email', 'password'))) {
 
-       if (auth()->attempt($credentials)) {
            $user = auth()->user();
 
            $access_token = $user->createToken(config('app.name'))->accessToken;

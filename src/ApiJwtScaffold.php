@@ -13,7 +13,7 @@ class ApiJwtScaffold
 
     public function getPackageClass(string $packageToUse)
     {
-        $packageName = studly_case($packageToUse);
+        $packageName = $this->getInstallerClassName($packageToUse);
 
         $installerClass = "Lacasera\\ApiJwtScaffold\Installers\\{$packageName}Installer";
 
@@ -22,5 +22,12 @@ class ApiJwtScaffold
         }
 
         return $installerClass;
+    }
+
+    private function getInstallerClassName(string $package)
+    {
+        $packageName = ucwords(str_replace(['-', '_'], ' ', $package));
+
+        return str_replace(' ', '', $packageName);
     }
 }
