@@ -2,15 +2,14 @@
 namespace Lacasera\ApiJwtScaffold\Installers;
 
 use Illuminate\Console\DetectsApplicationNamespace;
-use Illuminate\Support\Facades\Artisan;
 
 class TymonJwtInstaller extends InstallerContract
 {
     use DetectsApplicationNamespace;
 
     protected $commands = [
-        'vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"', // publish config for jwt
-        'jwt:secret' // generate secret key in env
+        'vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"',
+        'jwt:secret'
     ];
 
     protected $filesToCopy = [
