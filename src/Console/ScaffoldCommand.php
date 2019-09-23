@@ -43,8 +43,10 @@ class ScaffoldCommand extends Command
     public function handle(ApiJwtScaffold $apiJwtScaffold)
     {
 
-        $packageToUse = $this->choice( 'which package will you like to use ?',
-            $this->packages, $this->packages[0]);
+        $packageToUse = $this->choice(
+            'which package will you like to use ?',
+            $this->packages, $this->packages[0]
+        );
 
         $confirmed = $this->confirm( 'This action may override existing auth configurations. Do you want to proceed?');
 

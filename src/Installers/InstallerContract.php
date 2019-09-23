@@ -2,8 +2,6 @@
 
 namespace Lacasera\ApiJwtScaffold\Installers;
 
-use Illuminate\Support\Facades\Artisan;
-
 abstract class InstallerContract
 {
 
@@ -29,7 +27,7 @@ abstract class InstallerContract
     public function runCommands(array $commands)
     {
         foreach ($commands as $cmd){
-            Artisan::call("$cmd -q");
+            $this->terminal("php artisan $cmd -q");
         }
     }
 
@@ -45,6 +43,9 @@ abstract class InstallerContract
             system($command , $status);
             $output = ob_get_contents();
             ob_end_clean();
+
+            return compact('output', 'status');
+
         }
 
         if(function_exists('passthru'))
@@ -53,12 +54,16 @@ abstract class InstallerContract
             passthru($command , $status);
             $output = ob_get_contents();
             ob_end_clean();
+
+            return compact('output', 'status');
         }
 
         if(function_exists('exec'))
         {
             exec($command , $output , $status);
             $output = implode("&quot;n&quot;" , $output);
+
+            return compact('output', 'status');
         }
 
         if(function_exists('shell_exec'))

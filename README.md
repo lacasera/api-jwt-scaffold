@@ -35,9 +35,13 @@ Feel free to modify them to your applications needs.
 ```php
 //api.php
 
-Route::post('me', 'AuthController@me');
-Route::post('login', 'AuthController@login');
-Route::post('register', 'RegisterController@create');
+Route::group(['namespace' => 'Auth'], function(){
+    Route::get('me', 'AuthController@me');
+    Route::post('login', 'AuthController@login');
+    Route::get('logout', 'AuthController@logout');
+    Route::post('register', 'RegisterController@create');
+});
+
 ```
 
 ### Testing
