@@ -7,7 +7,7 @@
 
 This package helps you quickly scaffold api authentication for you laravel project using 
 1. [Laravel Passport](https://laravel.com/docs/6.x/passport)
-2. [Tymon JWT](#)
+2. [Tymon JWT](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/)
 
 ## Installation
 `
