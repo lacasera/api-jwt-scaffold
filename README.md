@@ -11,7 +11,7 @@ This package helps you quickly scaffold api authentication for you laravel proje
 
 ## Installation
 `
-NB: always instal this package on a fresh install of laravel since it will overwrite some existing files
+NB: always install this package on a fresh install of laravel since it will overwrite some existing files
 `
 
 You can install the package via composer:
