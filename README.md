@@ -16,18 +16,30 @@ NB: always instal this package on a fresh install of laravel since it will overw
 
 You can install the package via composer:
 ```bash
-composer require lacasera/api-jwt-scaffold
+composer require lacasera/api-jwt-scaffold --dev
 ```
 
 ## Usage
-
 
 ```bash
 php artisan make:auth-api
 ```
 
 ```
+An Auth and Register Controllers will be generated to handle authentication requests to your application.
+Feel free to modify them to your applications needs.
 ```
+
+
+####
+```php
+//api.php
+
+Route::post('me', 'AuthController@me');
+Route::post('login', 'AuthController@login');
+Route::post('register', 'RegisterController@create');
+```
+
 ### Testing
 
 ``` bash
@@ -54,7 +66,3 @@ If you discover any security related issues, please email aboateng62@gmail.com i
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
