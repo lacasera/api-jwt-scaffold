@@ -48,5 +48,7 @@
                 "ApiJwtScaffold": "Lacasera\\ApiJwtScaffold\\ApiJwtScaffoldFacade"
             }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
