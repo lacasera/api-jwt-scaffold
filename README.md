@@ -21,17 +21,17 @@ composer require lacasera/api-jwt-scaffold --dev
 
 ## Usage
 
+1. run the command 
 ```bash
 php artisan make:auth-api
 ```
 
 ```
-An Auth and Register Controllers will be generated to handle authentication requests to your application.
+An Auth and Register Controllers will be generated under the Auth namespace to handle authentication requests to your application.
 Feel free to modify them to your applications needs.
 ```
 
-
-####
+2. define your routes
 ```php
 //api.php
 
@@ -43,6 +43,10 @@ Route::group(['namespace' => 'Auth'], function(){
 });
 
 ```
+3. make sure your requests to the api routes add the `Accepts: application/json` header.
+
+4. Enjoy.
+
 
 ### Testing
 
