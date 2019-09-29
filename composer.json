@@ -1,9 +1,10 @@
 {
     "name": "lacasera/api-jwt-scaffold",
-    "description": "This package helps scaffold jwt api authentication",
+    "description": "scaffold jwt authentication for your api",
     "keywords": [
-        "lacasera",
-        "api-jwt-scaffold"
+        "jwt",
+        "authentication",
+        "laravel"
     ],
     "homepage": "https://github.com/lacasera/api-jwt-scaffold",
     "license": "MIT",
