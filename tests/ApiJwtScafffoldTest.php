@@ -14,9 +14,9 @@ class ApiJwtScaffoldTest extends TestCase
     /** @test */
     public function should_return_the_appropriate_class_to_use_given_a_package()
     {
-        $scaffolder = new ApiJwtScaffold;
+        $scaffold = new ApiJwtScaffold;
 
-        $expected = $scaffolder->getPackageClass('laravel-passport');
+        $expected = $scaffold->getPackageClass('laravel-passport');
 
         $this->assertEquals($expected, "Lacasera\ApiJwtScaffold\Installers\LaravelPassportInstaller");
     }
