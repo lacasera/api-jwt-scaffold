@@ -39,19 +39,20 @@ class ScaffoldCommand extends Command
      *
      * @param ApiJwtScaffold $apiJwtScaffold
      * @return mixed
+     * @throws \Exception
      */
-    public function handle(ApiJwtScaffold $apiJwtScaffold)
+    public function handle(ApiJwtScaffold $apiJwtScaffold): void
     {
-
         $packageToUse = $this->choice(
             'which package will you like to use ?',
-            $this->packages, $this->packages[0]
+            $this->packages,
+            $this->packages[0]
         );
 
-        $confirmed = $this->confirm( 'This action may override existing auth configurations. Do you want to proceed?');
+        $confirmed = $this->confirm('This action may override existing auth configurations. Do you want to proceed?');
 
         if (!$confirmed) {
-           $this->info('Scaffolding aborted');
+            $this->info('Scaffolding aborted');
         }
 
         $this->info("Scaffolding your api auth using $packageToUse. Please wait..");

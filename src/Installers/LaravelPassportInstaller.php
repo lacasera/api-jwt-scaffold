@@ -7,6 +7,9 @@ class LaravelPassportInstaller extends InstallerContract
 {
     use DetectsApplicationNamespace;
 
+    /**
+     * @var array
+     */
     protected $filesToCopy = [
         'model/User.stub' => 'User.php',
         'providers/AuthServiceProvider.stub' => 'Providers/AuthServiceProvider.php',
@@ -14,6 +17,9 @@ class LaravelPassportInstaller extends InstallerContract
         'controllers/RegisterController.stub' => 'Http/Controllers/Auth/RegisterController.php'
     ];
 
+    /**
+     * @var array
+     */
     protected $commands = [
         'migrate',
         'passport:install',
@@ -37,8 +43,8 @@ class LaravelPassportInstaller extends InstallerContract
                 $this->compileFileStub($stub)
             );
         }
-
     }
+
 
     /**
      * @param $file
@@ -53,6 +59,10 @@ class LaravelPassportInstaller extends InstallerContract
         );
     }
 
+    /**
+     * scaffolds api authentication with laravel passport
+     * @return bool
+     */
     public function scaffold()
     {
         if (!class_exists("Laravel\Passport\Client")) {
@@ -65,5 +75,4 @@ class LaravelPassportInstaller extends InstallerContract
 
         return true;
     }
-
 }
