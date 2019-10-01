@@ -4,9 +4,6 @@ namespace Lacasera\ApiJwtScaffold;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Lacasera\ApiJwtScaffold\Skeleton\SkeletonClass
- */
 class ApiJwtScaffoldFacade extends Facade
 {
     /**
